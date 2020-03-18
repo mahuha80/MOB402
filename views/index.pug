@@ -1,0 +1,19 @@
+doctype html
+head
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='style.css')
+  title Document
+.container.d-flex.flex-column
+  form
+    .form-group
+      label(for='exampleInputEmail1') Email address
+      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+    .form-group
+      label(for='exampleInputPassword1') Password
+      input#exampleInputPassword1.form-control(type='password' placeholder='Password')
+    .row.justify-content-center
+      button.btn.btn-primary(type='submit' style='margin-right: 32px;') Login
+      button.btn.btn-primary(type='submit') 
+        a(href="/register" style="text-decoration:none;color:white") Register

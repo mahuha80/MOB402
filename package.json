@@ -1,0 +1,20 @@
+{
+  "name": "vinhntph08047_mob402_assignment",
+  "version": "0.1.0",
+  "description": "Assignment HT vinhntph08047",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Vinhnt",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
