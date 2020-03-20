@@ -2,12 +2,15 @@ const User = require("../models/user.model");
 module.exports.LoginUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
+  console.log(username,password)
   if (username.length == 0 || password.length == 0) {
     return;
   }
   loginUser(username, password).then(data => {
     if (data.length == 0 || data.length > 1) {
+      console.log("lol")
       res.json({
+        
         status: "failed",
         message: "login failed"
       });
@@ -17,6 +20,7 @@ module.exports.LoginUser = (req, res, next) => {
         status: "success",
         message: "login successfully"
       });
+      console.log("ok")
     }
   });
 };

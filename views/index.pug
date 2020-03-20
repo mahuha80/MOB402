@@ -6,13 +6,13 @@ head
   link(rel='stylesheet' href='style.css')
   title Document
 .container.d-flex.flex-column
-  form
+  form(method="post" action="/api/login")
     .form-group
-      label(for='exampleInputEmail1') Email address
-      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp' placeholder='Enter email')
+      label(for='exampleInputEmail1') Username
+      input#exampleInputEmail1.form-control(type='' aria-describedby='emailHelp' placeholder='Enter your username' name='username')
     .form-group
       label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control(type='password' placeholder='Password')
+      input#exampleInputPassword1.form-control(type='password' placeholder='Enter your password' name='password')
     .row.justify-content-center
       button.btn.btn-primary(type='submit' style='margin-right: 32px;') Login
       button.btn.btn-primary(type='submit') 
