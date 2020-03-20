@@ -1,4 +1,25 @@
 const User = require("../models/user.model");
+module.exports.LoginUser = (req, res, next) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  if (username.length == 0 || password.length == 0) {
+    return;
+  }
+  loginUser(username, password).then(data => {
+    if (data.length == 0 || data.length > 1) {
+      res.json({
+        status: "failed",
+        message: "login failed"
+      });
+      return;
+    } else {
+      res.json({
+        status: "success",
+        message: "login successfully"
+      });
+    }
+  });
+};
 module.exports.RegisterNewUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
@@ -41,5 +62,9 @@ module.exports.RegisterNewUser = (req, res, next) => {
 };
 getUserName = async () => {
   let data = await User.find({});
+  return data;
+};
+loginUser = async (username, password) => {
+  let data = await User.find({ username, password });
   return data;
 };
