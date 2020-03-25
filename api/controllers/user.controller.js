@@ -1,16 +1,13 @@
-const User = require("../models/user.model");
+const User = require("../../models/user.model");
 module.exports.LoginUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
-  console.log(username,password)
   if (username.length == 0 || password.length == 0) {
     return;
   }
   loginUser(username, password).then(data => {
     if (data.length == 0 || data.length > 1) {
-      console.log("lol")
       res.json({
-        
         status: "failed",
         msg: "login failed"
       });
@@ -20,7 +17,6 @@ module.exports.LoginUser = (req, res, next) => {
         status: "success",
         msg: "login successfully"
       });
-      console.log("ok")
     }
   });
 };
