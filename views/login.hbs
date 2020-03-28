@@ -14,15 +14,19 @@
                 id="exampleInputEmail1" type="" aria-describedby="emailHelp" placeholder="Enter your username"
                 name="username"></div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label><input class="form-control"
-                id="exampleInputPassword1" type="password" placeholder="Enter your password" name="password"></div>
+            <label for="exampleInputPassword1">Password</label><input class="form-control" id="exampleInputPassword1"
+                type="password" placeholder="Enter your password" name="password"></div>
         <div class="row justify-content-center">
             <button class="btn btn-primary" type="submit" style="margin-right: 32px;">Login</button>
             <button class="btn btn-primary" type="submit">
-                <a href="/register" style="text-decoration:none;color:white;">Register</a>
+                <a href="/user/register" style="text-decoration:none;color:white;">Register</a>
             </button>
         </div>
     </form>
     <br>
-    <div class="alert alert-danger" role="alert">{{ msg}}</div>
+    <div class="entry">
+        {{#if err}}
+        <div class="alert alert-danger" role="alert">{{msg}}</div>
+        {{/if}}
+    </div>
 </div>

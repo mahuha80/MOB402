@@ -14,8 +14,8 @@ module.exports.LoginUser = (req, res, next) => {
   }
   loginUser(username, password).then(data => {
     if (data.length == 0 || data.length > 1) {
-      console.log("lol");
       res.render("login", {
+        err: true,
         msg: "Login failed"
       });
       return;
@@ -29,6 +29,7 @@ module.exports.RegisterNewUser = (req, res, next) => {
   let password = req.body.password;
   if (username.length == 0 || password.length == 0) {
     res.render("register", {
+      err: true,
       msg: "Please enter your username and password"
     });
     return;
@@ -49,14 +50,16 @@ module.exports.RegisterNewUser = (req, res, next) => {
       user.save(err => {
         if (err) {
           res.render("register", {
-            msg: `error is ${err}`
+            err: true,
+            msg: `Error is ${err}`
           });
         }
         res.redirect("/user/login");
       });
     } else {
       res.render("register", {
-        msg: "user already exists in system"
+        err: true,
+        msg: "User already exists in system"
       });
     }
   });
