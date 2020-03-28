@@ -6,9 +6,13 @@ const port = 3000;
 
 var bodyParser = require("body-parser");
 
+const hbs = require("express-handlebars");
+//declare route in project
 const userRoute = require("./routes/user.route");
 
 const api = require("./api/routes/user.route");
+
+const product = require("./routes/product.route");
 
 app.use(express.static("public"));
 
@@ -34,9 +38,16 @@ mongoose
     }
   );
 
-app.set("view engine", "pug");
+app.engine(
+  ".hbs",
+  hbs({
+    extname: "hbs",
+    defaultLayout: "",
+    layoutsDir: ""
+  })
+);
 
-app.set("views", "./views");
+app.set("view engine", ".hbs");
 
 app.get("/", (req, res) => res.render("index"));
 
@@ -44,12 +55,6 @@ app.use("/user", userRoute);
 
 app.use("/api", api);
 
-app.get("/register", (req, res) => {
-  res.render("register");
-});
-app.get("/login",(req,res)=>{
-  res.render('index')
-})
-
+app.use("/product",product)
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

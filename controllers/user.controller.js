@@ -1,26 +1,26 @@
 const User = require("../models/user.model");
+module.exports.renderRegister = (req, res) => {
+  res.render("register");
+};
+module.exports.renderLogin = (req, res, next) => {
+  res.render("login");
+};
 module.exports.LoginUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
-  console.log(username,password)
+  console.log(username, password);
   if (username.length == 0 || password.length == 0) {
     return;
   }
   loginUser(username, password).then(data => {
     if (data.length == 0 || data.length > 1) {
-      console.log("lol")
-      res.json({
-        
-        status: "failed",
-        msg: "login failed"
+      console.log("lol");
+      res.render("login", {
+        msg: "Login failed"
       });
       return;
     } else {
-      res.json({
-        status: "success",
-        msg: "login successfully"
-      });
-      console.log("ok")
+      res.redirect("/product");
     }
   });
 };
@@ -28,6 +28,9 @@ module.exports.RegisterNewUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
   if (username.length == 0 || password.length == 0) {
+    res.render("register", {
+      msg: "Please enter your username and password"
+    });
     return;
   }
   getUserName().then(data => {
@@ -45,20 +48,14 @@ module.exports.RegisterNewUser = (req, res, next) => {
       });
       user.save(err => {
         if (err) {
-          res.status(404).json({
-            status: "failed",
+          res.render("register", {
             msg: `error is ${err}`
           });
         }
-        res.status(200).json({
-          status: "success",
-          data: user,
-          msg: `register new user successfully`
-        });
+        res.redirect("/user/login");
       });
     } else {
-      res.status(404).json({
-        status: "failed",
+      res.render("register", {
         msg: "user already exists in system"
       });
     }
