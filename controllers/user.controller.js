@@ -10,6 +10,10 @@ module.exports.LoginUser = (req, res, next) => {
   let password = req.body.password;
   console.log(username, password);
   if (username.length == 0 || password.length == 0) {
+    res.render('login',{
+      err:true,
+      msg:'Please input your username and password'
+    })
     return;
   }
   loginUser(username, password).then(data => {
