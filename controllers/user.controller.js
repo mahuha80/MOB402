@@ -20,6 +20,7 @@ module.exports.LoginUser = (req, res, next) => {
       });
       return;
     } else {
+      res.cookie("userid", username, { signed: true });
       res.redirect("/product");
     }
   });
