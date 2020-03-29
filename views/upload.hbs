@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+{{!-- name:String,
+  price:Integer,
+  image:String,
+  description:String,
+  type:String --}}
+
+<body>
+    <div class="col-md-6 offset-md-3 mt-5">
+        <form accept-charset="UTF-8" action="https://getform.io/f/{your-form-endpoint-goes-here}" method="POST"
+            target="_blank">
+            <div class="form-group">
+                <label for="name">Tên sản phẩm</label>
+                <input type="text" name="name" class="form-control" id="name" required="required">
+            </div>
+            <div class="form-group">
+                <label for="price" required="required">Đơn giá</label>
+                <input type="number" name="price" class="form-control" id="price">
+            </div>
+            <div class="form-group mt-3">
+                <label class="mr-2">Hình ảnh</label>
+                <input type="file" name="file">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1" required="required">Miêu tả sản phẩm</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1">
+            </div>
+            <div class="form-group">
+                <label for="type">Loại sản phẩm</label>
+                <input type="text" name="type" class="form-control" id="type">
+            </div>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
