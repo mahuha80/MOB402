@@ -4,3 +4,6 @@ module.exports.renderIndex = (req, res, next) => {
 module.exports.renderUpload = (req, res, next) => {
   res.render("upload");
 };
+module.exports.renderManage=(req,res)=>{
+  res.render("manage")
+}
