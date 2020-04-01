@@ -18,10 +18,9 @@ const api = require("./api/routes/user.route");
 
 const product = require("./routes/product.route");
 
-const requireLogin = require('./middlewares/checkLogin.middleware');
+const requireLogin = require("./middlewares/checkLogin.middleware");
 
 app.use(express.static("public"));
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -51,8 +50,8 @@ app.engine(
   ".hbs",
   hbs({
     extname: "hbs",
-    defaultLayout: "",
-    layoutsDir: ""
+    defaultLayout: "common",
+    layoutsDir: __dirname + "/views/layouts"
   })
 );
 
@@ -61,7 +60,6 @@ app.set("view engine", ".hbs");
 app.get("/", (req, res) => {
   res.render("login");
 });
-
 app.use("/user", userRoute);
 
 app.use("/api", api);
