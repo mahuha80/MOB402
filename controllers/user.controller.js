@@ -6,9 +6,7 @@ module.exports.renderLogin = (req, res, next) => {
   res.render("login");
 };
 module.exports.LoginUser = (req, res, next) => {
-  let username = req.body.username;
-  let password = req.body.password;
-  console.log(username, password);
+  let {username,password} = req.body;
   if (username.length == 0 || password.length == 0) {
     res.render("login", {
       err: true,
