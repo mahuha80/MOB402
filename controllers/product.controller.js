@@ -21,3 +21,7 @@ module.exports.uploadNewProduct = (req, res) => {
     res.render("upload", { success: true, show: true, search: false });
   });
 };
+module.exports.getAllProduct = async (req, res, next) => {
+  let data = await Product.find({});
+  console.log(data);
+};

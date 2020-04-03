@@ -16,4 +16,6 @@ router.get("/manage", controller.renderManage);
 
 router.post("/upload", upload.single('image'),controller.uploadNewProduct);
 
+router.get("/data",controller.getAllProduct)
+
 module.exports = router;
