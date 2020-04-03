@@ -1,5 +1,5 @@
 <div class="col-md-6  offset-md-3 mt-5">
-    <form method="POST" action="/product/upload" enctype="multipart/form-data" >
+    <form method="POST" action="/product/upload" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name1">Tên sản phẩm</label>
             <input type="text" name="name" class="form-control" id="name1" required="required">
@@ -10,7 +10,7 @@
         </div>
         <div class="form-group mt-3">
             <label class="mr-2">Hình ảnh</label>
-            <input type="file" name="file">
+            <input type="file" name="image" class="form-control-file">
         </div>
         <div class="form-group">
             <label for="description1" required="required">Miêu tả sản phẩm</label>
@@ -24,4 +24,12 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
+    <div class="entry">
+        {{#if err}}
+        <div class="alert alert-danger" role="alert">Upload product failed</div>
+        {{/if}}
+        {{#if success}}
+        <div class="alert alert-success"" role=" alert">Upload product successfully</div>
+        {{/if}}
+    </div>
 </div>
