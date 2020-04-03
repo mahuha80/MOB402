@@ -58,7 +58,7 @@ app.engine(
 app.set("view engine", ".hbs");
 
 app.get("/", (req, res) => {
-  res.render("login");
+  res.redirect('/product')
 });
 app.use("/user", userRoute);
 
