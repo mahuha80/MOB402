@@ -11,6 +11,8 @@ var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 
 const hbs = require("express-handlebars");
+
+
 //declare route in project
 const userRoute = require("./routes/user.route");
 
