@@ -1,6 +1,6 @@
 var express = require("express");
 
-var multer = require('multer');
+var multer = require("multer");
 
 var router = express.Router();
 
@@ -14,6 +14,8 @@ router.get("/upload", controller.renderUpload);
 
 router.get("/manage", controller.renderManage);
 
-router.post("/upload", upload.single('image'),controller.uploadNewProduct);
+router.post("/upload", upload.single("image"), controller.uploadNewProduct);
+
+router.get("/remove", controller.removeOneProduct);
 
 module.exports = router;

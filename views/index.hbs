@@ -1,18 +1,20 @@
 <div class="container">
     <div class="row">
-        {{#each items}}
-        {{this}}
+        {{#each items as |item i| }}
+        {{#each item }}
+        {{#if name}}
         <div class="col-md-3.5 col-sm-5 col-xs-6 col-lg-4 col-10" style="margin-bottom: 24px">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src={{this.image}} alt="Card image cap">
+            <div class="card " style="width: 18rem;">
+                <img class="card-img-top" src={{image}} alt="Card image cap">
                 <div class="card-body mt-4">
-                    <h5 class="card-title">{{this.name}}</h5>
-                    <p class="card-text">{{this.price}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">{{price}}</p>
+                    <a href="" class="btn btn-primary">Xem sản phẩm </a>
                 </div>
             </div>
         </div>
-
+        {{/if}}
+        {{/each}}
         {{/each}}
 
     </div>
