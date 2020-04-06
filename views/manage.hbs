@@ -19,7 +19,9 @@
                 <td>
                     <form action="/product/remove" method="GET">
                         <button class="btn btn-primary" name="rm" value={{_id}} type="submit">Xóa</button>
-                        <button class="btn btn-danger">Sửa</button>
+                        <button class="btn btn-danger">
+                            <a href={{_id}} style="text-decoration: none;color: white;">Sửa</a>
+                        </button>
                     </form>
                 </td>
             <tr>

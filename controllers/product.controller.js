@@ -1,10 +1,18 @@
 const Product = require("../models/product.model");
 module.exports.renderIndex = async (req, res, next) => {
   let products = await Product.find({});
+  let showPagnigation = Math.ceil(products.length / 9);
+  let bshowPagnigation;
+  if (showPagnigation == 1) {
+    bshowPagnigation = false;
+  } else {
+    showPagnigation = true;
+  }
   res.render("index", {
     show: true,
     search: true,
     items: products,
+    page: bshowPagnigation,
   });
 };
 module.exports.removeOneProduct = async (req, res, next) => {
@@ -19,6 +27,15 @@ module.exports.removeOneProduct = async (req, res, next) => {
       msg: "Xóa sản phẩm thành công",
     });
   }
+};
+module.exports.searchProduct = async (req, res, next) => {
+  let s = req.query.s;
+  let product = await Product.find({ name: s });
+  res.render("index", {
+    show: true,
+    search: true,
+    items: product,
+  });
 };
 
 module.exports.renderUpload = (req, res, next) => {
