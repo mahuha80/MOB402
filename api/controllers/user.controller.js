@@ -5,18 +5,18 @@ module.exports.LoginUser = (req, res, next) => {
   if (username.length == 0 || password.length == 0) {
     return;
   }
-  loginUser(username, password).then(data => {
+  loginUser(username, password).then((data) => {
     if (data.length == 0 || data.length > 1) {
-      res.json({
+      res.status(400).json({
         status: "failed",
-        msg: "login failed"
+        msg: "login failed",
       });
       return;
     } else {
       res.cookie("userid", username, { signed: true });
-      res.json({
+      res.status(200).json({
         status: "success",
-        msg: "login successfully"
+        msg: "login successfully",
       });
     }
   });
@@ -27,8 +27,8 @@ module.exports.RegisterNewUser = (req, res, next) => {
   if (username.length == 0 || password.length == 0) {
     return;
   }
-  getUserName().then(data => {
-    var usernamelist = data.map(x => {
+  getUserName().then((data) => {
+    var usernamelist = data.map((x) => {
       return x.username;
     });
     var usernameset = new Set(usernamelist);
@@ -38,25 +38,26 @@ module.exports.RegisterNewUser = (req, res, next) => {
     if (nextsize > currentsize) {
       const user = new User({
         username,
-        password
+        password,
       });
-      user.save(err => {
+      user.save((err) => {
         if (err) {
-          res.status(404).json({
+          res.status(400).json({
             status: "failed",
-            msg: `error is ${err}`
+            msg: `error is ${err}`,
+          });
+        } else {
+          res.status(200).json({
+            status: "success",
+            data: user,
+            msg: `register new user successfully`,
           });
         }
-        res.status(200).json({
-          status: "success",
-          data: user,
-          msg: `register new user successfully`
-        });
       });
     } else {
-      res.status(404).json({
+      res.status(400).json({
         status: "failed",
-        msg: "user already exists in system"
+        msg: "user already exists in system",
       });
     }
   });

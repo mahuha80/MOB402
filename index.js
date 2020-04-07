@@ -12,11 +12,12 @@ var bodyParser = require("body-parser");
 
 const hbs = require("express-handlebars");
 
-
 //declare route in project
 const userRoute = require("./routes/user.route");
 
-const api = require("./api/routes/user.route");
+// const userAPI = require("./api/routes/user.route");
+
+const productAPI = require('./api/routes/product.route')
 
 const product = require("./routes/product.route");
 
@@ -64,7 +65,7 @@ app.get("/", (req, res) => {
 });
 app.use("/user", userRoute);
 
-app.use("/api", api);
+app.use("/api", productAPI);
 
 app.use("/product", requireLogin.requireAuth, product);
 
