@@ -1,4 +1,28 @@
 const Product = require("../models/product.model");
+module.exports.renderEdit = async (req, res, next) => {
+  let id = req.params.id;
+  let product = await Product.find({ _id: id });
+  if (id) {
+    res.render("edit", {
+      show: true,
+      items: product,
+    });
+  }
+};
+module.exports.editProduct = async (req, res, next) => {
+  let id = req.params.id;
+  let { name, price, description, type } = req.body;
+  let filepath = req.file.path;
+  let path = filepath.slice(7);
+  let image = path.slice(0, 7) + "/" + path.slice(8, path.length);
+  let status = await Product.updateOne(
+    { _id: id },
+    { name, price, image, description, type }
+  );
+  if (status.ok === 1) {
+    res.redirect("/product");
+  }
+};
 module.exports.renderIndex = async (req, res, next) => {
   if (!req.query.s) {
     let products = await Product.find({});

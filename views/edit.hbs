@@ -1,29 +1,36 @@
 <div class="col-md-6  offset-md-3 mt-5">
-    <form method="POST" action="/product/upload" enctype="multipart/form-data">
+    {{#each items as |item index|}}
+    {{#each item}}
+    {{#if name}}
+    <form method="POST" action="/product/edit/{{_id}}" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name1">Tên sản phẩm</label>
-            <input type="text" name="name" class="form-control" id="name1" required>
+            <input type="text" required name="name" class="form-control" id="name1" required="required" value={{name}}>
+
         </div>
         <div class="form-group">
             <label for="price1" required="required">Đơn giá</label>
-            <input type="number" name="price" class="form-control" id="price1" required>
+            <input type="number" required name="price" class="form-control" id="price1" value={{price}}>
         </div>
         <div class="form-group mt-3">
             <label class="mr-2">Hình ảnh</label>
-            <input type="file" name="image" class="form-control-file" required>
+            <input type="file" required name="image" class="form-control-file">
         </div>
         <div class="form-group">
             <label for="description1" required="required">Miêu tả sản phẩm</label>
-            <input type="text" name="description" class="form-control" id="description1" required>
+            <input type="text" required name="description" class="form-control" id="description1" value={{description}}>
         </div>
         <div class="form-group">
             <label for="type1">Loại sản phẩm</label>
-            <input type="text" name="type" class="form-control" id="type1" required>
+            <input type="text" required name="type" class="form-control" id="type1" value={{type}}>
         </div>
         <div class="col text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
+    {{/if}}
+    {{/each}}
+    {{/each}}
     <div class="entry">
         {{#if err}}
         <div class="alert alert-danger" role="alert">Upload product failed</div>
