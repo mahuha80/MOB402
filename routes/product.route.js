@@ -16,7 +16,7 @@ router.get("/manage", controller.renderManage);
 
 router.post("/upload", upload.single("image"), controller.uploadNewProduct);
 
-router.get("/remove", controller.removeOneProduct);
+// router.get("/remove", controller.removeOneProduct);
 
 // router.get('/:id',controller.searchProduct)
 // router.get('/:id',controller.viewDetailProduct)

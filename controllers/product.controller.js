@@ -17,9 +17,7 @@ module.exports.renderIndex = async (req, res, next) => {
     });
   } else {
     let s = req.query.s;
-    console.log(s);
     let products = await Product.find({ name: s });
-    console.log(products);
     res.render("index", {
       show: true,
       search: true,
@@ -27,26 +25,28 @@ module.exports.renderIndex = async (req, res, next) => {
     });
   }
 };
-module.exports.removeOneProduct = async (req, res, next) => {
-  let rm = req.query.rm;
-  let status = await Product.deleteOne({ _id: rm });
-  if (status.deletedCount > 0) {
-    let products = await Product.find({});
-    res.render("manage", {
-      show: true,
-      search: false,
-      items: products,
-      msg: "Xóa sản phẩm thành công",
-    });
-  }
-};
 module.exports.renderUpload = (req, res, next) => {
   res.render("upload", { show: true, search: false });
 };
 module.exports.renderManage = async (req, res) => {
-  let products = await Product.find({});
-  res.render("manage", { show: true, search: false, items: products });
+  if (!req.query.rm) {
+    let products = await Product.find({});
+    res.render("manage", { show: true, search: false, items: products });
+  } else {
+    let rm = req.query.rm;
+    let status = await Product.deleteOne({ _id: rm });
+    if (status.deletedCount > 0) {
+      let products = await Product.find({});
+      res.render("manage", {
+        show: true,
+        search: false,
+        items: products,
+        msg: "Xóa sản phẩm thành công",
+      });
+    }
+  }
 };
+// module.exports.editProduct
 module.exports.uploadNewProduct = (req, res) => {
   let { name, price, description, type } = req.body;
   let filepath = req.file.path;
