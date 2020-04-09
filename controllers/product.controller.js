@@ -1,3 +1,4 @@
+const fs = require('fs');
 const Product = require("../models/product.model");
 module.exports.renderEdit = async (req, res, next) => {
   let id = req.params.id;
@@ -15,6 +16,12 @@ module.exports.editProduct = async (req, res, next) => {
   let filepath = req.file.path;
   let path = filepath.slice(7);
   let image = path.slice(0, 7) + "/" + path.slice(8, path.length);
+  let product = await Product.findOne({_id:id});
+  let nameOfImgae = product.image.split('/')[1];
+  let pathOfImage = `./public/uploads/${nameOfImgae}`
+  fs.unlink(pathOfImage,(err)=>{
+    if(err) console.log(err)
+  })
   let status = await Product.updateOne(
     { _id: id },
     { name, price, image, description, type }
@@ -58,7 +65,13 @@ module.exports.renderManage = async (req, res) => {
     res.render("manage", { show: true, search: false, items: products });
   } else {
     let rm = req.query.rm;
+    let product = await Product.findOne({_id:rm});
     let status = await Product.deleteOne({ _id: rm });
+    let name = product.image.split('/')[1];
+    let path = `./public/uploads/${name}`
+    fs.unlink(path,(err)=>{
+      if(err) status.deletedCount=0
+    })
     if (status.deletedCount > 0) {
       let products = await Product.find({});
       res.render("manage", {
@@ -67,6 +80,8 @@ module.exports.renderManage = async (req, res) => {
         items: products,
         msg: "Xóa sản phẩm thành công",
       });
+    }else{
+      res.redirect('/product/manage')
     }
   }
 };
