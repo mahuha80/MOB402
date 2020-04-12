@@ -16,10 +16,13 @@ const hbs = require("express-handlebars");
 const userRoute = require("./routes/user.route");
 
 // const userAPI = require("./api/routes/user.route");
+const userAPI = require("./api/routes/user.route");
 
-const productAPI = require('./api/routes/product.route')
+const productAPI = require("./api/routes/product.route");
 
 const product = require("./routes/product.route");
+
+// const verify = require("./api/controllers/verify.controller");
 
 const requireLogin = require("./middlewares/checkLogin.middleware");
 
@@ -38,13 +41,13 @@ mongoose.Promise = global.Promise;
 mongoose
   .connect(process.env.mongo, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(
     () => {
       console.log("connect db successfully");
     },
-    err => {
+    (err) => {
       console.log(`connect failed ${err}`);
     }
   );
@@ -54,18 +57,21 @@ app.engine(
   hbs({
     extname: "hbs",
     defaultLayout: "common",
-    layoutsDir: __dirname + "/views/layouts"
+    layoutsDir: __dirname + "/views/layouts",
   })
 );
 
 app.set("view engine", ".hbs");
 
 app.get("/", (req, res) => {
-  res.redirect('/product')
+  res.redirect("/product");
 });
+
 app.use("/user", userRoute);
 
-app.use("/api", productAPI);
+app.use("/api/product", productAPI);
+
+app.use("/api/user", userAPI);
 
 app.use("/product", requireLogin.requireAuth, product);
 

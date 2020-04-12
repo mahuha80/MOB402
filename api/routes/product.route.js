@@ -6,9 +6,15 @@ var router = express.Router();
 
 var controller = require("../controllers/product.controller");
 
-router.get("/getAllProducts", controller.getAllProduct);
+var verify = require("../routes/verify.route");
 
-router.post("/removeOneProduct",controller.removeOneProduct)
+router.get("/getAllProducts", verify.validateToken, controller.getAllProduct);
+
+router.post(
+  "/removeOneProduct",
+  verify.validateToken,
+  controller.removeOneProduct
+);
 
 // router.get("/", controller.renderIndex);
 
