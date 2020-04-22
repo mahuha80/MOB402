@@ -6,4 +6,5 @@ router.get("/register", controller.renderRegister);
 router.get("/login", controller.renderLogin);
 router.post("/register", controller.RegisterNewUser);
 router.post("/login", controller.LoginUser);
+router.get("/manage",controller.manageUser)
 module.exports = router;

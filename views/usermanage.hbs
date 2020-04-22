@@ -1,0 +1,41 @@
+<div class="container">
+    <table class="table" style="margin: auto;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">username</th>
+                <th scope="col"></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {{#each items as | item i| }}
+            {{#each item as |item|}}
+            {{#if username}}
+            <tr>
+                <td>{{i}}</td>
+                <td>{{username}}</td>
+                <td>
+                    <form action="/user/manage" method="GET">
+                        <button class="btn btn-danger" name="rm" value={{_id}} type="submit">Xóa</button>
+                    </form>
+                </td>
+            <tr>
+
+                {{/if}}
+                {{/each}}
+                {{/each}}
+
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+    <div class="entry">
+        {{#if msg}}
+        <div class="alert alert-danger" role="alert">{{msg}}</div>
+        {{/if}}
+    </div>
+</div>

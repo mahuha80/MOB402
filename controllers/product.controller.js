@@ -8,6 +8,7 @@ module.exports.renderEdit = async (req, res, next) => {
       show: true,
       items: product,
     });
+    
   }
 };
 module.exports.editProduct = async (req, res, next) => {
@@ -31,6 +32,7 @@ module.exports.editProduct = async (req, res, next) => {
   }
 };
 module.exports.renderIndex = async (req, res, next) => {
+
   if (!req.query.s) {
     let products = await Product.find({});
     let showPagnigation = Math.ceil(products.length / 9);
@@ -40,6 +42,7 @@ module.exports.renderIndex = async (req, res, next) => {
     } else {
       showPagnigation = true;
     }
+    //cái object truyền sang obs này
     res.render("index", {
       show: true,
       search: true,

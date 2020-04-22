@@ -5,20 +5,40 @@ module.exports.renderRegister = (req, res) => {
 module.exports.renderLogin = (req, res, next) => {
   res.render("login");
 };
+module.exports.manageUser = async (req, res, next) => {
+  if (!req.query.rm) {
+    let data = await User.find({});
+    res.render("usermanage", { show: true, items: data });
+  } else {
+    let rm = req.query.rm;
+    let status = await User.deleteOne({ _id: rm });
+    if (status.deletedCount > 0) {
+      let data1 = await User.find({});
+      res.render("usermanage", {
+        show: true,
+        search: false,
+        items: data1,
+        msg: "Xóa user thành công",
+      });
+    } else {
+      res.redirect("/user/manage");
+    }
+  }
+};
 module.exports.LoginUser = (req, res, next) => {
-  let {username,password} = req.body;
+  let { username, password } = req.body;
   if (username.length == 0 || password.length == 0) {
     res.render("login", {
       err: true,
-      msg: "Please input your username and password"
+      msg: "Please input your username and password",
     });
     return;
   }
-  loginUser(username, password).then(data => {
+  loginUser(username, password).then((data) => {
     if (data.length == 0 || data.length > 1) {
       res.render("login", {
         err: true,
-        msg: "Login failed"
+        msg: "Login failed",
       });
       return;
     } else {
@@ -27,18 +47,19 @@ module.exports.LoginUser = (req, res, next) => {
     }
   });
 };
+module.exports.removeOneUser = async (req, res, next) => {};
 module.exports.RegisterNewUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
   if (username.length == 0 || password.length == 0) {
     res.render("register", {
       err: true,
-      msg: "Please enter your username and password"
+      msg: "Please enter your username and password",
     });
     return;
   }
-  getUserName().then(data => {
-    var usernamelist = data.map(x => {
+  getUserName().then((data) => {
+    var usernamelist = data.map((x) => {
       return x.username;
     });
     var usernameset = new Set(usernamelist);
@@ -48,13 +69,13 @@ module.exports.RegisterNewUser = (req, res, next) => {
     if (nextsize > currentsize) {
       const user = new User({
         username,
-        password
+        password,
       });
-      user.save(err => {
+      user.save((err) => {
         if (err) {
           res.render("register", {
             err: true,
-            msg: `Error is ${err}`
+            msg: `Error is ${err}`,
           });
         }
         res.redirect("/user/login");
@@ -62,7 +83,7 @@ module.exports.RegisterNewUser = (req, res, next) => {
     } else {
       res.render("register", {
         err: true,
-        msg: "User already exists in system"
+        msg: "User already exists in system",
       });
     }
   });

@@ -22,8 +22,6 @@ const productAPI = require("./api/routes/product.route");
 
 const product = require("./routes/product.route");
 
-// const verify = require("./api/controllers/verify.controller");
-
 const requireLogin = require("./middlewares/checkLogin.middleware");
 
 app.use(express.static("public"));

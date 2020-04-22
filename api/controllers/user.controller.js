@@ -3,9 +3,6 @@ const jwt =  require('jsonwebtoken');
 module.exports.LoginUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
-  if (username.length == 0 || password.length == 0) {
-    return;
-  }
   loginUser(username, password).then((data) => {
     if (data.length == 0 || data.length > 1) {
       res.status(400).json({
@@ -25,9 +22,6 @@ module.exports.LoginUser = (req, res, next) => {
 module.exports.RegisterNewUser = (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
-  if (username.length == 0 || password.length == 0) {
-    return;
-  }
   getUserName().then((data) => {
     var usernamelist = data.map((x) => {
       return x.username;
