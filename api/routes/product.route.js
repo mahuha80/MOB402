@@ -8,13 +8,22 @@ var controller = require("../controllers/product.controller");
 
 var verify = require("../routes/verify.route");
 
-router.get("/getAllProducts", verify.validateToken, controller.getAllProduct);
 
+// router.get("/getAllProducts", verify.validateToken, controller.getAllProduct);
+
+router.get("/getAllProducts", controller.getAllProduct);
 router.post(
   "/removeOneProduct",
-  verify.validateToken,
   controller.removeOneProduct
 );
+router.post("/addProductToCart",controller.addProductToCart)
+router.get("/getAllProductInCart",controller.getAllProductInCart)
+
+// router.post(
+//   "/removeOneProduct",
+//   verify.validateToken,
+//   controller.removeOneProduct
+// );
 
 // router.get("/", controller.renderIndex);
 

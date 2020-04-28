@@ -1,20 +1,24 @@
 const User = require("../../models/user.model");
 const jwt =  require('jsonwebtoken');
 module.exports.LoginUser = (req, res, next) => {
-  let username = req.body.username;
+  let user = req.body.username;
   let password = req.body.password;
+  let username = user.toLowerCase();
   loginUser(username, password).then((data) => {
     if (data.length == 0 || data.length > 1) {
       res.status(400).json({
         status: "failed",
         msg: "login failed",
+        token : "",
+        username: ""
       });
       return;
     } else {
       res.status(200).json({
         status: "success",
         msg: "login successfully",
-        token:jwt.sign({username},'abcd1234',{ expiresIn : 60*60*24})
+        token:jwt.sign({username},'abcd1234',{ expiresIn : 60*60*24}),
+        username:username
       });
     }
   });
