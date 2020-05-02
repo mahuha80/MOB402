@@ -17,7 +17,7 @@ router.post(
   controller.removeOneProduct
 );
 router.post("/addProductToCart",controller.addProductToCart)
-router.get("/getAllProductInCart",controller.getAllProductInCart)
+router.post("/getAllProductInCartByID",controller.getAllProductInCart)
 
 // router.post(
 //   "/removeOneProduct",

@@ -6,11 +6,12 @@ module.exports.LoginUser = (req, res, next) => {
   let username = user.toLowerCase();
   loginUser(username, password).then((data) => {
     if (data.length == 0 || data.length > 1) {
-      res.status(400).json({
+      res.status(401).json({
         status: "failed",
         msg: "login failed",
         token : "",
-        username: ""
+        username: "",
+        userId:""
       });
       return;
     } else {
@@ -18,7 +19,9 @@ module.exports.LoginUser = (req, res, next) => {
         status: "success",
         msg: "login successfully",
         token:jwt.sign({username},'abcd1234',{ expiresIn : 60*60*24}),
-        username:username
+        username:username,
+        userId:data[0]._id
+
       });
     }
   });

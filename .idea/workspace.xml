@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a10c0919-2240-4d83-ba9f-3612a6080513" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/api/controllers/product.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/product.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/7837b085f6391c65e1c3646bfd92d924" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/8f27fc318ad707ff4f4a04198e04d372" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/b9fa7b611b14c18a04e61c4519c3d69b" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bCrVfUv1LxfLW2iMFuNvvhNYsP" />
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a10c0919-2240-4d83-ba9f-3612a6080513" name="Default Changelist" comment="" />
+      <created>1588146941267</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588146941267</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
