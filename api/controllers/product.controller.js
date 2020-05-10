@@ -52,6 +52,7 @@ module.exports.addProductToCart = async (req, res) => {
   let { userId } = req.body;
   let { items } = req.body;
   let productInCart = [];
+  console.log(req.body)
   for(let item of items){
     let component = item.split(" ");
     let index=component[1].indexOf("quantity");
