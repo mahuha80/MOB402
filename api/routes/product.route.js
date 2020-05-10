@@ -11,13 +11,10 @@ var verify = require("../routes/verify.route");
 
 // router.get("/getAllProducts", verify.validateToken, controller.getAllProduct);
 
-router.get("/getAllProducts", controller.getAllProduct);
-router.post(
-  "/removeOneProduct",
-  controller.removeOneProduct
-);
-router.post("/addProductToCart",controller.addProductToCart)
-router.post("/getAllProductInCartByID",controller.getAllProductInCart)
+router.get("/getAllProducts", verify.validateToken, controller.getAllProduct);
+router.post("/removeOneProduct", verify.validateToken, controller.removeOneProduct);
+router.post("/addProductToCart", verify.validateToken, controller.addProductToCart)
+router.post("/getAllProductInCartByID", verify.validateToken, controller.getAllProductInCart)
 
 // router.post(
 //   "/removeOneProduct",
