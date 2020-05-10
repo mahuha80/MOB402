@@ -2,7 +2,7 @@ const express = require("express");
 
 const app = express();
 
-const port = 3000 || process.env.port;
+const port = 3000 || process.env.PORT;
 
 require("dotenv").config();
 
@@ -37,7 +37,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect(process.env.mongo, {
+  .connect(process.env.mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
