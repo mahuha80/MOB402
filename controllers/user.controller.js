@@ -3,7 +3,11 @@ module.exports.renderRegister = (req, res) => {
   res.render("register");
 };
 module.exports.renderLogin = (req, res, next) => {
-  res.render("login");
+  if(req.signedCookies.userid){
+    res.redirect('/product')
+  }else{
+    res.render("login");
+  }
 };
 module.exports.manageUser = async (req, res, next) => {
   if (!req.query.rm) {

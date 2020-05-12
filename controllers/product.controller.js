@@ -33,7 +33,6 @@ module.exports.editProduct = async (req, res, next) => {
       { _id: id },
       { name, price, image, description, type, public_id }
     );
-    console.log(name, price, image, description, type, public_id)
     if (status.ok === 1) {
       res.redirect("/product");
     }
@@ -83,7 +82,6 @@ module.exports.renderManage = async (req, res) => {
     if (status.deletedCount>0) {
       let products = await Product.find({});
       await cloudinary.uploader.destroy(product.public_id,async (err, x) => {
-        console.log(x)
       })
       res.render("manage", {
         show: true,
@@ -108,13 +106,10 @@ module.exports.uploadNewProduct = (req, res) => {
       if (result != null) {
         fs.unlink(imagePath, (err) => {
           if (err) {
-            console.log(err)
           } else {
-            console.log('ok');
             let image = result.url;
             let public_id = result.public_id;
             const product = new Product({ name, price, image, description, type, public_id });
-            console.log(product)
             product.save((err) => {
               if (err) {
                 res.render("upload", { err: true, show: true, search: false });
