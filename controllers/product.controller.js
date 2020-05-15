@@ -3,9 +3,9 @@ const Product = require("../models/product.model");
 var cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-  cloud_name: 'dbsuft3kg',
-  api_key: '187556512436832',
-  api_secret: 'o_h3YnE8vQnneoICfSgrKH0AEgU'
+  cloud_name: 'djnaybb64',
+  api_key: '878181485188995',
+  api_secret: 'ecI4PtmR405fJMhOZxugHvmytbc'
 });
 
 module.exports.renderEdit = async (req, res, next) => {
